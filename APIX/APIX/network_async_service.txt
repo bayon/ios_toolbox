@@ -1,0 +1,156 @@
+
+#import <Foundation/Foundation.h>
+/** This class handles the call to the service providing the musicians information.
+
+ */
+@interface AsyncNetwork : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+{
+	NSMutableArray *returnArray;
+}
+
+
+@property (nonatomic, retain) NSMutableArray *returnArray;
+/**---------------------------------------------------------------------------------------
+ * @name load
+ *  ---------------------------------------------------------------------------------------
+ */
+/** This method calls the service
+
+   @param string searchTerm
+   @return NSMutableArray
+ */
+- (NSMutableArray *)load:(NSString *)searchTerm;
+
+@end
+
+
+#import "AsyncNetwork.h"
+#import "MusicModel.h"
+
+@interface AsyncNetwork ()
+
+{
+	NSURLConnection *connection1;
+	NSMutableData *responseData;
+}
+@property (readwrite, copy) NSMutableArray *arrayOfArtists;
+@property (nonatomic, retain) NSMutableData *responseData;
+@property (nonatomic, retain) NSURLConnection *connection1;
+
+@property (nonatomic) int spaceIndex;
+
+- (NSMutableArray *)parseJSONDictionaryFromJSON:(NSDictionary *)JSONDictionary;
+
+@end
+
+@implementation AsyncNetwork
+@synthesize connection1, responseData, arrayOfArtists, returnArray, spaceIndex;
+
+
+
+- (NSMutableArray *)load:(NSString *)searchTerm {
+	NSMutableString *cleanString;
+	NSString *trimmedString = [searchTerm stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	cleanString = [trimmedString mutableCopy];
+	NSString *result = [self searchAndReplaceText:@" " withText:@"%20" forParentString:cleanString];
+
+	NSURL *myURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://ws.spotify.com/search/1/album.json?q=%@", result]];
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
+	connection1 = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+	return returnArray;
+}
+
+#pragma mark - Search And Replace Regex
+
+// Create a regular expression with given string
+- (NSRegularExpression *)regularExpressionWithString:(NSString *)string {
+	NSError *error = NULL;
+	NSString *pattern = [NSString stringWithFormat:@"%@", string];
+	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+	if (error) {
+		NSLog(@"Couldn't create regex with given string and options");
+	}
+
+	return regex;
+}
+
+- (NSString *)searchAndReplaceText:(NSString *)searchString withText:(NSString *)replacementString forParentString:(NSString *)parentString {
+	NSString *beforeText = parentString;
+	NSRange range = NSMakeRange(0, beforeText.length);
+	NSRegularExpression *regex = [self regularExpressionWithString:searchString];
+	NSString *afterText = [regex stringByReplacingMatchesInString:beforeText options:0 range:range withTemplate:replacementString];
+	return afterText;
+}
+
+#pragma mark - NSURL Delegate Methods
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+	responseData = [[NSMutableData alloc] init];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	[responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+	//NOTIFICATION:post
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"Notification_DataFailed" object:nil];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	NSError *e = [[NSError alloc]init];
+	NSDictionary *jsonResponseData =
+	    [NSJSONSerialization JSONObjectWithData:responseData
+	                                    options:NSJSONReadingMutableContainers
+	                                      error:&e];
+
+	returnArray = [self parseJSONDictionaryFromJSON:jsonResponseData];
+
+	//NOTIFICATION:post
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"Notification_NameOfThisNotification" object:nil];
+}
+
+#pragma mark - Parse Dictionary
+
+- (NSMutableArray *)parseJSONDictionaryFromJSON:(NSDictionary *)JSONDictionary {
+	arrayOfArtists = [[NSMutableArray alloc] init];
+
+	for (id key in JSONDictionary) {
+		if ([key isEqualToString:@"albums"]) {
+			NSArray *arrayOfEntity = [JSONDictionary objectForKey:key];
+			for (id entityObject in arrayOfEntity) {
+				id value = [JSONDictionary objectForKey:key];
+				for (id k2 in value) {
+					MusicModel *musicModel = [[MusicModel alloc]init];
+					for (id key in k2) {
+						id value = [k2 objectForKey:key];
+						NSString *valueAsString = (NSString *)value;
+						if ([key isEqualToString:@"name"]) {
+							musicModel.albumn = valueAsString;
+						}
+						if ([key isEqualToString:@"popularity"]) {
+							musicModel.popularity = valueAsString;
+						}
+						if ([key isEqualToString:@"artists"]) {
+							for (id dict in value) {
+								for (id key in dict) {
+									id value = [dict objectForKey:key];
+									NSString *valueAsString = (NSString *)value;
+
+									if ([key isEqualToString:@"name"]) {
+										musicModel.artist = valueAsString;
+									}
+								}
+							}
+						}
+					}
+					[arrayOfArtists addObject:musicModel];
+				}
+			}
+		}
+	}
+	return arrayOfArtists;
+}
+
+@end

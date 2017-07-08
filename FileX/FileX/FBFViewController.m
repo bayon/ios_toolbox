@@ -1,0 +1,60 @@
+//
+//  FBFViewController.m
+//  FileX
+//
+//  Created by Bayon Forte on 2/14/14.
+//  Copyright (c) 2014 Mocura. All rights reserved.
+//
+
+#import "FBFViewController.h"
+#import "FBFAppDelegate.h"
+@interface FBFViewController ()
+{
+	NSData *data;
+}
+@end
+
+@implementation FBFViewController
+
+- (void)viewDidLoad {
+	[super viewDidLoad];
+
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+	                                                     NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *fileName = @"mySavedText.txt";
+	NSString *path = [documentsDirectory stringByAppendingPathComponent:fileName];
+	//NSString to NSData
+	NSString *str = @"Hi, I need to save some data to a file.";
+	data = [str dataUsingEncoding:NSUTF8StringEncoding];
+	[data writeToFile:path atomically:YES];
+	[self loadFile:fileName];
+}
+
+- (void)loadFile:(NSString *)filename {
+	NSString *fullFilePath = [self getFullFilePath:filename];
+
+	if ([[NSFileManager defaultManager] fileExistsAtPath:fullFilePath]) {
+		NSLog(@"File found");
+		NSLog(@"Data:%@", [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:fullFilePath] encoding:NSASCIIStringEncoding]);
+	}
+	else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"File error!" message:@"An error occured when trying to load the selected file." delegate:self cancelButtonTitle:@"OK!" otherButtonTitles:nil, nil];
+		[alert show];
+	}
+}
+
+- (NSString *)getFullFilePath:(NSString *)filename {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains
+	        (NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *fullFilePath = [documentsDirectory stringByAppendingPathComponent:filename];
+
+	return fullFilePath;
+}
+
+- (void)didReceiveMemoryWarning {
+	[super didReceiveMemoryWarning];
+}
+
+@end

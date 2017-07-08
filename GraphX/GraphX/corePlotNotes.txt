@@ -1,0 +1,9 @@
+
+Right-click on your newly-created group and select Add Files to “CorePlotDemo”… When the file dialog appears, navigate to the folder where you extracted the Core Plot ZIP file and drill down to the following location: CorePlot_1.0\Binaries\iOS. Select both CorePlotHeaders and the static library named libCorePlot-CocoaTouch.a. Make sure that the box labeled “Copy items into destination group’s folder (if needed)” is checked.
+
+
+Now that you’ve added the framework, you need to wire it in. This involves the following steps:
+Click the CorePlotDemo root in the Project Navigator, select the CorePlotDemo target in the center pane, and then click Build Settings. Find the Other Linker Flags field and enter -ObjC into the field.
+Now change from Build Settings to Build Phases in the center pane. Expand the group named “Link Binary with Libraries.” Check to make sure that Xcode added the Core Plot static library when you added the Core Plot files to your project. If for some reason the Core Plot library is not listed, click the plus (+) button at the bottom of the section, click the “Add Other …” button, and navigate to your project folder to find the Core Plot library.
+Finally, click the plus (+) button and proceed to add the QuartzCore framework.
+You should be able to Build (via Cmd-B) your project without errors at this point. Make sure that this is indeed the case.
