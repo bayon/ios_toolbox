@@ -1,0 +1,40 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.9.6
+-- http://www.phpmyadmin.net
+--
+-- Host: mysql
+-- Generation Time: Aug 30, 2012 at 09:00 AM
+-- Server version: 4.1.14
+-- PHP Version: 5.2.12
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `mobile`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `images`
+--
+
+CREATE TABLE IF NOT EXISTS `images` (
+  `image_id` bigint(20) NOT NULL auto_increment,
+  `image_filename` varchar(255) NOT NULL default '',
+  `image_name` varchar(255) NOT NULL default '',
+  `image_extension` varchar(5) NOT NULL default '',
+  `image_filepath` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`image_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`image_id`, `image_filename`, `image_name`, `image_extension`, `image_filepath`) VALUES
+(15, 'Screen Shot 2012-06-18 at 12.56.27 PM.png', 'Screen Shot 2012-06-18 at 12', '56', ''),
+(14, 'flag_blue.gif', 'flag_blue', 'gif', ''),
+(13, 'UCS_DownloadScreen.jpg', 'UCS_DownloadScreen', 'jpg', ''),
+(12, 'logo-fazolis.jpg', 'logo-fazolis', 'jpg', ''),
+(11, 'marketing_area_bg.png', 'marketing_area_bg', 'png', '');

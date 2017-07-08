@@ -1,0 +1,116 @@
+// FRAMEWORKS
+CoreLocation
+
+// MainVC.h
+
+#import <UIKit/UIKit.h>
+#import "XLocationController.h"
+
+@interface MainViewController : UIViewController <XLocationControllerDelegate, UITextViewDelegate > {
+    IBOutlet UITextView *textView;
+	XLocationController *locationController;
+}
+-(IBAction)getLocation:(id)sender;
+
+- (void)locationUpdate:(CLLocation *)location;
+- (void)locationError:(NSError *)error;
+
+@end
+
+// MainVC.m
+
+
+#import "MainViewController.h"
+
+
+@implementation MainViewController
+
+- (void)viewDidLoad {
+	locationController = [[XLocationController alloc] init];
+	locationController.delegate = self;
+}
+
+-(IBAction)getLocation:(id)sender;
+{
+    [locationController.locationManager startUpdatingLocation];
+}
+ 
+- (void)locationUpdate:(CLLocation *)location {
+    [textView setText:[location description]];
+}
+
+- (void)locationError:(NSError *)error {
+     [textView setText:[error description]];
+}
+
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+@end
+
+
+// LocationController.h
+#import <CoreLocation/CoreLocation.h>
+
+@protocol XLocationControllerDelegate <NSObject>
+@required
+- (void)locationUpdate:(CLLocation *)location; 
+- (void)locationError:(NSError *)error;
+@end
+
+@interface XLocationController : NSObject <CLLocationManagerDelegate> {
+	CLLocationManager *locationManager;
+}
+
+@property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic, assign) id <XLocationControllerDelegate> delegate;
+
+- (void)locationManager:(CLLocationManager *)manager
+	didUpdateToLocation:(CLLocation *)newLocation
+		   fromLocation:(CLLocation *)oldLocation;
+
+- (void)locationManager:(CLLocationManager *)manager
+	   didFailWithError:(NSError *)error;
+
+@end
+
+
+// LocationController.m
+#import "XLocationController.h"
+
+@implementation XLocationController
+
+@synthesize locationManager;
+@synthesize delegate;
+
+- (id) init {
+	self = [super init];
+	if (self != nil) {
+		self.locationManager = [[CLLocationManager alloc] init] ;
+		self.locationManager.delegate = self; // send loc updates to myself
+	}
+	return self;
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+	didUpdateToLocation:(CLLocation *)newLocation
+		   fromLocation:(CLLocation *)oldLocation
+{
+	[self.delegate locationUpdate:newLocation];
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager
+	   didFailWithError:(NSError *)error
+{
+	[self.delegate locationError:error];
+}
+
+
+@end
+
+
+
+

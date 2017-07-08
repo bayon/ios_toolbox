@@ -1,0 +1,25 @@
+API Information
+You will be using the Spotify Search API
+
+API Documentation
+Application should search at a minimum for albums
+Display only the first page of results for the search term input by the user
+
+
+https://developer.spotify.com/technologies/web-api/search/
+
+Search
+Album
+Service base URL: http://ws.spotify.com/search/1/album
+
+Parameters
+q
+search string encoded in UTF-8; required
+page
+the page of the result set to return; defaults to 1
+
+Examples
+http://ws.spotify.com/search/1/album?q=foo
+
+
+

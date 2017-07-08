@@ -1,0 +1,14 @@
+
+
+1) one Option:
+https://blog.apigee.com/detail/tutorial_push_notifications_in_5_simple_steps
+5 simple steps to delivering push notifications
+Register your app with a push provider.
+Register with Apigee.
+Create a notifier.
+Configure your app’s users and devices through Apigee’s API.
+Send push notifications.
+
+2.) http://www.raywenderlich.com/3443/apple-push-notification-services-tutorial-part-12
+
+

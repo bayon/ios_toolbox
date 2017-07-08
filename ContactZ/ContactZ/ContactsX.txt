@@ -1,0 +1,237 @@
+
+
+//FRAMEWORKS
+AddressBook
+AddressBookUI
+
+
+// VC.h
+
+#import <UIKit/UIKit.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
+
+@interface FBFViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate,ABPersonViewControllerDelegate,
+ABNewPersonViewControllerDelegate, ABUnknownPersonViewControllerDelegate>
+{
+    
+}
+
+-(IBAction)createPerson:(id)sender;
+-(IBAction)readContacts:(id)sender;
+-(NSArray *)getAllContacts;
+@end
+
+
+// VC.m
+#import "Person.h"
+
+
+@interface FBFViewController (){
+    //read all objects
+    NSMutableArray *_peopleObjects;
+    ABAddressBookRef _addressBook;
+}
+
+
+@property (nonatomic, retain) IBOutlet UIButton *createContactButton;
+@property (nonatomic, retain) IBOutlet UIButton *readContactsButton;
+
+@end
+
+@implementation FBFViewController
+
+@synthesize   createContactButton;
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	 
+}
+
+- (void)didReceiveMemoryWarning {
+	[super didReceiveMemoryWarning];
+	// Dispose of any resources that can be recreated.
+}
+
+- (IBAction)readContacts:(id)sender {
+    [self readAllContacts];
+    
+    // VIEW ALL CONTACTS IN THE LOG.
+    
+    for(id object in _peopleObjects){
+        ABRecordRef ref =  (__bridge ABRecordRef)(object);
+        NSString *compositeName  =(__bridge  NSString*) ABRecordCopyCompositeName(ref);
+        NSLog(@"compositeName: %@", compositeName);
+        
+        NSString *phoneNumber = @"";
+        ABMultiValueRef phoneNumbers = ABRecordCopyValue(ref, kABPersonPhoneProperty);
+        if(ABMultiValueGetCount(phoneNumbers)>0){
+            phoneNumber = (__bridge NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
+        }
+        NSLog(@"phoneNumber: %@", phoneNumber);
+        
+        NSString *email= @"";
+        ABMultiValueRef emails = ABRecordCopyValue(ref, kABPersonEmailProperty);
+        if(ABMultiValueGetCount(emails)>0){
+            email= (__bridge NSString *) ABMultiValueCopyValueAtIndex(emails, 0);
+        }
+        NSLog(@"email: %@", email);
+    }
+    
+    
+    
+}
+
+-(void)readAllContacts{
+    CFErrorRef error;
+    _addressBook = ABAddressBookCreateWithOptions(NULL, &error);
+    [self checkAddressBookAccess];
+    
+    _peopleObjects = (__bridge NSMutableArray *)ABAddressBookCopyArrayOfAllPeople(_addressBook);
+    
+    
+}
+#pragma mark -
+#pragma mark Address Book Access
+// Check the authorization status of our application for Address Book
+-(void)checkAddressBookAccess
+{
+    switch (ABAddressBookGetAuthorizationStatus())
+    {
+            // Update our UI if the user has granted access to their Contacts
+        case  kABAuthorizationStatusAuthorized:
+            _peopleObjects = (__bridge NSMutableArray *)ABAddressBookCopyArrayOfAllPeople(_addressBook);
+           // [self.tableView reloadData];
+            break;
+            // Prompt the user for access to Contacts if there is no definitive answer
+        case  kABAuthorizationStatusNotDetermined :
+            [self requestAddressBookAccess];
+            break;
+            // Display a message if the user has denied or restricted access to Contacts
+        case  kABAuthorizationStatusDenied:{
+            
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Privacy Warning"
+                                                            message:@"Permission was not granted for Contacts. Please grant permission by going to \nSettings->Privacy->Contacts and enabling Whozoo to access your contacts."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"OK", nil];
+            [alert show];
+        }
+            break;
+        case  kABAuthorizationStatusRestricted:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Privacy Warning"
+                                                            message:@"Permission was not granted for Contacts."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+            break;
+        default:
+            break;
+    }
+}
+// Prompt the user for access to their Address Book data
+-(void)requestAddressBookAccess
+{
+    ABAddressBookRequestAccessWithCompletion(_addressBook, ^(bool granted, CFErrorRef error)
+                                             {
+                                                 if (granted)
+                                                 {
+                                                     dispatch_async(dispatch_get_main_queue(), ^{
+                                                         
+                                                     });
+                                                 }
+                                             });
+}
+
+
+- (IBAction)createPerson:(id)sender {
+	// THIS IS THE APPLE CONTACTS APP WAY.
+	// [self showNewPersonViewController];
+	[self addContactProgramatically];
+}
+
+- (void)addContactProgramatically {
+	Person *person = [[Person alloc]init];
+	person.phone = @"555-550 3645";
+	person.firstName = @"JOE";
+
+	CFErrorRef error = NULL;
+	NSLog(@"%@", [self description]);
+	ABAddressBookRef iPhoneAddressBook = ABAddressBookCreate();
+	ABRecordRef newPerson = ABPersonCreate();
+	ABRecordSetValue(newPerson, kABPersonFirstNameProperty, (__bridge CFTypeRef)(person.firstName), &error);
+	//ABRecordSetValue(newPerson, kABPersonLastNameProperty, people.lastname, &error);
+	ABMutableMultiValueRef multiPhone =     ABMultiValueCreateMutable(kABMultiStringPropertyType);
+	ABMultiValueAddValueAndLabel(multiPhone, (__bridge CFTypeRef)(person.phone), kABPersonPhoneMainLabel, NULL);
+	//ABMultiValueAddValueAndLabel(multiPhone, people.other, kABOtherLabel, NULL);
+	ABRecordSetValue(newPerson, kABPersonPhoneProperty, multiPhone, nil);
+	CFRelease(multiPhone);
+	// ...
+	// Set other properties
+	// ...
+	ABAddressBookAddRecord(iPhoneAddressBook, newPerson, &error);
+
+	ABAddressBookSave(iPhoneAddressBook, &error);
+	CFRelease(newPerson);
+	CFRelease(iPhoneAddressBook);
+	if (error != NULL) {
+		CFStringRef errorDesc = CFErrorCopyDescription(error);
+		NSLog(@"Contact not saved: %@", errorDesc);
+		CFRelease(errorDesc);
+	}
+}
+
+// THIS IS THE APPLE CONTACTS APP WAY.
+- (void)showNewPersonViewController {
+	ABNewPersonViewController *picker = [[ABNewPersonViewController alloc] init];
+	picker.newPersonViewDelegate = self;
+
+	UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:picker];
+	[self presentViewController:navigation animated:YES completion:nil];
+}
+
+
+@end
+
+
+// Person.h
+
+@interface Person : NSObject
+{
+	
+    NSString *firstName;
+    NSString * phone;
+    NSString *zip;
+	NSString *state;
+	NSString *address2;
+	NSString *address1;
+	NSString *country;
+	NSString *city;
+}
+@property (nonatomic, retain) NSString *zip;
+@property (nonatomic, retain) NSString *state;
+@property (nonatomic, retain) NSString *address2;
+@property (nonatomic, retain) NSString *address1;
+@property (nonatomic, retain) NSString *country;
+@property (nonatomic, retain) NSString *city;
+@property (nonatomic, retain) NSString *firstName;
+@property (nonatomic, retain) NSString *phone;
+
+ 
+
+@end
+
+
+// Person.m
+
+#import "Person.h"
+
+@implementation Person
+@synthesize city, address2, state, zip, country, address1, firstName, phone ;
+ 
+
+@end
+

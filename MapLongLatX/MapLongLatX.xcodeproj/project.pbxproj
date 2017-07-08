@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2884679F18B29D7D00E562BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2884679E18B29D7D00E562BC /* Foundation.framework */; };
+		288467A118B29D7D00E562BC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288467A018B29D7D00E562BC /* CoreGraphics.framework */; };
+		288467A318B29D7D00E562BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288467A218B29D7D00E562BC /* UIKit.framework */; };
+		288467A918B29D7D00E562BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 288467A718B29D7D00E562BC /* InfoPlist.strings */; };
+		288467AB18B29D7D00E562BC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 288467AA18B29D7D00E562BC /* main.m */; };
+		288467AF18B29D7D00E562BC /* FBFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 288467AE18B29D7D00E562BC /* FBFAppDelegate.m */; };
+		288467B218B29D7D00E562BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288467B018B29D7D00E562BC /* Main.storyboard */; };
+		288467B518B29D7D00E562BC /* FBFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288467B418B29D7D00E562BC /* FBFViewController.m */; };
+		288467B718B29D7D00E562BC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 288467B618B29D7D00E562BC /* Images.xcassets */; };
+		288467BE18B29D7D00E562BC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288467BD18B29D7D00E562BC /* XCTest.framework */; };
+		288467BF18B29D7D00E562BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2884679E18B29D7D00E562BC /* Foundation.framework */; };
+		288467C018B29D7D00E562BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288467A218B29D7D00E562BC /* UIKit.framework */; };
+		288467C818B29D7D00E562BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 288467C618B29D7D00E562BC /* InfoPlist.strings */; };
+		288467CA18B29D7D00E562BC /* MapLongLatXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 288467C918B29D7D00E562BC /* MapLongLatXTests.m */; };
+		288467D418B29D8E00E562BC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288467D318B29D8E00E562BC /* MapKit.framework */; };
+		E5981ADE18C2813700B5EA71 /* MapLongLatX.txt in Resources */ = {isa = PBXBuildFile; fileRef = E5981ADD18C2813700B5EA71 /* MapLongLatX.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		288467C118B29D7D00E562BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2884679318B29D7D00E562BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2884679A18B29D7D00E562BC;
+			remoteInfo = MapLongLatX;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2884679B18B29D7D00E562BC /* MapLongLatX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapLongLatX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2884679E18B29D7D00E562BC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		288467A018B29D7D00E562BC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		288467A218B29D7D00E562BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288467A618B29D7D00E562BC /* MapLongLatX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MapLongLatX-Info.plist"; sourceTree = "<group>"; };
+		288467A818B29D7D00E562BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		288467AA18B29D7D00E562BC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		288467AC18B29D7D00E562BC /* MapLongLatX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapLongLatX-Prefix.pch"; sourceTree = "<group>"; };
+		288467AD18B29D7D00E562BC /* FBFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBFAppDelegate.h; sourceTree = "<group>"; };
+		288467AE18B29D7D00E562BC /* FBFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBFAppDelegate.m; sourceTree = "<group>"; };
+		288467B118B29D7D00E562BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		288467B318B29D7D00E562BC /* FBFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBFViewController.h; sourceTree = "<group>"; };
+		288467B418B29D7D00E562BC /* FBFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBFViewController.m; sourceTree = "<group>"; };
+		288467B618B29D7D00E562BC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		288467BC18B29D7D00E562BC /* MapLongLatXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapLongLatXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		288467BD18B29D7D00E562BC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		288467C518B29D7D00E562BC /* MapLongLatXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MapLongLatXTests-Info.plist"; sourceTree = "<group>"; };
+		288467C718B29D7D00E562BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		288467C918B29D7D00E562BC /* MapLongLatXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapLongLatXTests.m; sourceTree = "<group>"; };
+		288467D318B29D8E00E562BC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E5981ADD18C2813700B5EA71 /* MapLongLatX.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MapLongLatX.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2884679818B29D7D00E562BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				288467D418B29D8E00E562BC /* MapKit.framework in Frameworks */,
+				288467A118B29D7D00E562BC /* CoreGraphics.framework in Frameworks */,
+				288467A318B29D7D00E562BC /* UIKit.framework in Frameworks */,
+				2884679F18B29D7D00E562BC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		288467B918B29D7D00E562BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				288467BE18B29D7D00E562BC /* XCTest.framework in Frameworks */,
+				288467C018B29D7D00E562BC /* UIKit.framework in Frameworks */,
+				288467BF18B29D7D00E562BC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2884679218B29D7D00E562BC = {
+			isa = PBXGroup;
+			children = (
+				288467A418B29D7D00E562BC /* MapLongLatX */,
+				288467C318B29D7D00E562BC /* MapLongLatXTests */,
+				2884679D18B29D7D00E562BC /* Frameworks */,
+				2884679C18B29D7D00E562BC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2884679C18B29D7D00E562BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2884679B18B29D7D00E562BC /* MapLongLatX.app */,
+				288467BC18B29D7D00E562BC /* MapLongLatXTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2884679D18B29D7D00E562BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				288467D318B29D8E00E562BC /* MapKit.framework */,
+				2884679E18B29D7D00E562BC /* Foundation.framework */,
+				288467A018B29D7D00E562BC /* CoreGraphics.framework */,
+				288467A218B29D7D00E562BC /* UIKit.framework */,
+				288467BD18B29D7D00E562BC /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		288467A418B29D7D00E562BC /* MapLongLatX */ = {
+			isa = PBXGroup;
+			children = (
+				288467AD18B29D7D00E562BC /* FBFAppDelegate.h */,
+				288467AE18B29D7D00E562BC /* FBFAppDelegate.m */,
+				288467B018B29D7D00E562BC /* Main.storyboard */,
+				288467B318B29D7D00E562BC /* FBFViewController.h */,
+				288467B418B29D7D00E562BC /* FBFViewController.m */,
+				288467B618B29D7D00E562BC /* Images.xcassets */,
+				288467A518B29D7D00E562BC /* Supporting Files */,
+				E5981ADD18C2813700B5EA71 /* MapLongLatX.txt */,
+			);
+			path = MapLongLatX;
+			sourceTree = "<group>";
+		};
+		288467A518B29D7D00E562BC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				288467A618B29D7D00E562BC /* MapLongLatX-Info.plist */,
+				288467A718B29D7D00E562BC /* InfoPlist.strings */,
+				288467AA18B29D7D00E562BC /* main.m */,
+				288467AC18B29D7D00E562BC /* MapLongLatX-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		288467C318B29D7D00E562BC /* MapLongLatXTests */ = {
+			isa = PBXGroup;
+			children = (
+				288467C918B29D7D00E562BC /* MapLongLatXTests.m */,
+				288467C418B29D7D00E562BC /* Supporting Files */,
+			);
+			path = MapLongLatXTests;
+			sourceTree = "<group>";
+		};
+		288467C418B29D7D00E562BC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				288467C518B29D7D00E562BC /* MapLongLatXTests-Info.plist */,
+				288467C618B29D7D00E562BC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2884679A18B29D7D00E562BC /* MapLongLatX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 288467CD18B29D7D00E562BC /* Build configuration list for PBXNativeTarget "MapLongLatX" */;
+			buildPhases = (
+				2884679718B29D7D00E562BC /* Sources */,
+				2884679818B29D7D00E562BC /* Frameworks */,
+				2884679918B29D7D00E562BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MapLongLatX;
+			productName = MapLongLatX;
+			productReference = 2884679B18B29D7D00E562BC /* MapLongLatX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		288467BB18B29D7D00E562BC /* MapLongLatXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 288467D018B29D7D00E562BC /* Build configuration list for PBXNativeTarget "MapLongLatXTests" */;
+			buildPhases = (
+				288467B818B29D7D00E562BC /* Sources */,
+				288467B918B29D7D00E562BC /* Frameworks */,
+				288467BA18B29D7D00E562BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				288467C218B29D7D00E562BC /* PBXTargetDependency */,
+			);
+			name = MapLongLatXTests;
+			productName = MapLongLatXTests;
+			productReference = 288467BC18B29D7D00E562BC /* MapLongLatXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2884679318B29D7D00E562BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FBF;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = Mocura;
+				TargetAttributes = {
+					288467BB18B29D7D00E562BC = {
+						TestTargetID = 2884679A18B29D7D00E562BC;
+					};
+				};
+			};
+			buildConfigurationList = 2884679618B29D7D00E562BC /* Build configuration list for PBXProject "MapLongLatX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2884679218B29D7D00E562BC;
+			productRefGroup = 2884679C18B29D7D00E562BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2884679A18B29D7D00E562BC /* MapLongLatX */,
+				288467BB18B29D7D00E562BC /* MapLongLatXTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2884679918B29D7D00E562BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5981ADE18C2813700B5EA71 /* MapLongLatX.txt in Resources */,
+				288467B718B29D7D00E562BC /* Images.xcassets in Resources */,
+				288467A918B29D7D00E562BC /* InfoPlist.strings in Resources */,
+				288467B218B29D7D00E562BC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		288467BA18B29D7D00E562BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				288467C818B29D7D00E562BC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2884679718B29D7D00E562BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				288467AB18B29D7D00E562BC /* main.m in Sources */,
+				288467AF18B29D7D00E562BC /* FBFAppDelegate.m in Sources */,
+				288467B518B29D7D00E562BC /* FBFViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		288467B818B29D7D00E562BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				288467CA18B29D7D00E562BC /* MapLongLatXTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		288467C218B29D7D00E562BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2884679A18B29D7D00E562BC /* MapLongLatX */;
+			targetProxy = 288467C118B29D7D00E562BC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		288467A718B29D7D00E562BC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				288467A818B29D7D00E562BC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		288467B018B29D7D00E562BC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				288467B118B29D7D00E562BC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		288467C618B29D7D00E562BC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				288467C718B29D7D00E562BC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		288467CB18B29D7D00E562BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		288467CC18B29D7D00E562BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		288467CE18B29D7D00E562BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MapLongLatX/MapLongLatX-Prefix.pch";
+				INFOPLIST_FILE = "MapLongLatX/MapLongLatX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		288467CF18B29D7D00E562BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MapLongLatX/MapLongLatX-Prefix.pch";
+				INFOPLIST_FILE = "MapLongLatX/MapLongLatX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		288467D118B29D7D00E562BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MapLongLatX.app/MapLongLatX";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MapLongLatX/MapLongLatX-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MapLongLatXTests/MapLongLatXTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		288467D218B29D7D00E562BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MapLongLatX.app/MapLongLatX";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MapLongLatX/MapLongLatX-Prefix.pch";
+				INFOPLIST_FILE = "MapLongLatXTests/MapLongLatXTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2884679618B29D7D00E562BC /* Build configuration list for PBXProject "MapLongLatX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				288467CB18B29D7D00E562BC /* Debug */,
+				288467CC18B29D7D00E562BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		288467CD18B29D7D00E562BC /* Build configuration list for PBXNativeTarget "MapLongLatX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				288467CE18B29D7D00E562BC /* Debug */,
+				288467CF18B29D7D00E562BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		288467D018B29D7D00E562BC /* Build configuration list for PBXNativeTarget "MapLongLatXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				288467D118B29D7D00E562BC /* Debug */,
+				288467D218B29D7D00E562BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2884679318B29D7D00E562BC /* Project object */;
+}
